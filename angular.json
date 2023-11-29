@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "market-analyzer:build:production"
+              "buildTarget": "market-analyzer:build:production"
             },
             "development": {
-              "browserTarget": "market-analyzer:build:development"
+              "buildTarget": "market-analyzer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "market-analyzer:build"
+            "buildTarget": "market-analyzer:build"
           }
         },
         "test": {
