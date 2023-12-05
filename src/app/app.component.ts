@@ -10,20 +10,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'market-analyzer';
-  public data:any = {}
   public valuationData!: ValuationData;
+
   constructor(private http: HttpClient) {
 
   }
 
-  getData() {
+  public ngOnInit(): void {
     const url = 'http://127.0.0.1:5000/sp-data'    
-    // const url = 'https://jsonplaceholder.typicode.com/photos?albumId-1'
     this.http.get<ValuationData>(url).subscribe((res) => {
       this.valuationData = res
-      // this.data = res;
       console.log(this.valuationData);
-      // console.log(this.data);
+    })
+  }
+
+  getData() {
+    const url = 'http://127.0.0.1:5000/sp-data'    
+    this.http.get<ValuationData>(url).subscribe((res) => {
+      this.valuationData = res
+      console.log(this.valuationData);
     })
   }
 }

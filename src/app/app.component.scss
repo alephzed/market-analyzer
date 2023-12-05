@@ -1,0 +1,46 @@
+.container {
+    margin: 10px;
+    background-color: #ffffff;
+  }
+  
+  .valuation-card {
+    max-width: 400px;
+    background-color: #ffffff;
+  }
+
+  .mat-divider {
+    border-top-color: black;
+  }
+
+  .mat-card {
+    background-color: #ffffff;
+  }
+
+  .title {
+    background-color: orangered;
+  }
+
+  .field-descriptor {
+    text-align: left;
+    padding: 1em;
+  }
+
+  .field-value {
+    text-align: right;
+    padding: 1em;
+
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+    padding: 1em;
+  }
+
+  .card-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    padding: 1em;
+  }

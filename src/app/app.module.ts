@@ -6,6 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { AboutComponent } from './pages/about/about.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { AboutComponent } from './pages/about/about.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatDividerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

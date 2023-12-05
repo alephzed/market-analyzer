@@ -10,7 +10,7 @@ export interface StockValuation {
     current_earnings: Earnings,
     future_earnings: Earnings,
     blended_earnings: Earnings,
-    max_Earnings: Earnings
+    max_earnings: Earnings
 }
 
 export interface MarketData {
