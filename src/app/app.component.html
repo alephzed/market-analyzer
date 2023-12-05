@@ -2,8 +2,6 @@
   <mat-toolbar>
     <span>Market Analyzer</span>
   </mat-toolbar>
-  <!-- <button (click)="getData()">Fetch Data</button> -->
-  <!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
   <div class="grid-container">
     <mat-card class="valuation-card">
       <mat-card-header class="title">
@@ -35,53 +33,25 @@
         <div class="field-descriptor">Intercept</div> <div class="field-value">{{valuationData.equation_coefficients.intercept}}</div>
       </mat-card-content>
     </mat-card>
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >{{ valuationData.stock_valuation.current_earnings.earnings_type }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Earnings</div> <div class="field-value">{{ valuationData.stock_valuation.current_earnings.earnings }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{valuationData.stock_valuation.current_earnings.calculated_price }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Valuation</div> <div class="field-value">{{valuationData.stock_valuation.current_earnings.valuation }}</div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >{{ valuationData.stock_valuation.future_earnings.earnings_type}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Earnings</div> <div class="field-value">{{ valuationData.stock_valuation.future_earnings.earnings }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ valuationData.stock_valuation.future_earnings.calculated_price }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Valuation</div> <div class="field-value">{{valuationData.stock_valuation.future_earnings.valuation}}</div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >{{ valuationData.stock_valuation.max_earnings.earnings_type}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Earnings</div> <div class="field-value">{{ valuationData.stock_valuation.max_earnings.earnings }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ valuationData.stock_valuation.max_earnings.calculated_price }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Valuation</div> <div class="field-value">{{valuationData.stock_valuation.max_earnings.valuation}}</div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >{{ valuationData.stock_valuation.blended_earnings.earnings_type}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Earnings</div> <div class="field-value">{{ valuationData.stock_valuation.blended_earnings.earnings }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ valuationData.stock_valuation.blended_earnings.calculated_price }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Valuation</div> <div class="field-value">{{valuationData.stock_valuation.blended_earnings.valuation}}</div>
-      </mat-card-content>
-    </mat-card>
+    <app-earnings [title]="valuationData.stock_valuation.current_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.current_earnings.earnings"
+                  [price]="valuationData.stock_valuation.current_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.current_earnings.valuation"
+    />
+    <app-earnings [title]="valuationData.stock_valuation.future_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.future_earnings.earnings"
+                  [price]="valuationData.stock_valuation.future_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.future_earnings.valuation"
+    />
+    <app-earnings [title]="valuationData.stock_valuation.max_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.max_earnings.earnings"
+                  [price]="valuationData.stock_valuation.max_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.max_earnings.valuation"
+    />
+    <app-earnings [title]="valuationData.stock_valuation.blended_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.blended_earnings.earnings"
+                  [price]="valuationData.stock_valuation.blended_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.blended_earnings.valuation"
+    />
   </div>
 </div>

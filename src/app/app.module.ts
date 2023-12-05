@@ -10,22 +10,24 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { EarningsComponent } from "./components/earnings/earnings.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatSlideToggleModule,
-    MatCardModule,
-    MatDividerModule,
-    MatToolbarModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AboutComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatSlideToggleModule,
+        MatCardModule,
+        MatDividerModule,
+        MatToolbarModule,
+        EarningsComponent
+    ]
 })
 export class AppModule { }
