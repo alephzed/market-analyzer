@@ -36,9 +36,12 @@ export interface EquationCoefficients {
 }
 
 export interface HistoricalQuote {
-    Date: string,
-    Price: number,
-    FairValue: number
+    date: string,
+    price: number,
+    fairvalue: number,
+    dividend: number,
+    earnings: number,
+    rate_gs10: number
 }
 
 export interface ValuationData {

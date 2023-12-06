@@ -10,7 +10,7 @@ import { StockAnalyzerService } from './services/stock-analyzer.service';
 export class AppComponent {
   title = 'market-analyzer';
   public valuationData!: ValuationData;
-  public displayedColumns: string[] = ['Date', 'Price', 'FairValue'];
+  public displayedColumns: string[] = ['date', 'price', 'fairvalue'];
 
   constructor(private stockAnalyzerService: StockAnalyzerService) {
 
