@@ -9,6 +9,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { EarningsComponent } from "./components/earnings/earnings.component";
 
@@ -26,6 +27,7 @@ import { EarningsComponent } from "./components/earnings/earnings.component";
         MatSlideToggleModule,
         MatCardModule,
         MatDividerModule,
+        MatTableModule,
         MatToolbarModule,
         EarningsComponent
     ]

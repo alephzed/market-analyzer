@@ -1,4 +1,4 @@
-import { ValuationData } from './valuationdata';
+import { HistoricalQuote, ValuationData } from './models/valuationdata';
 import { Component } from '@angular/core';
 import { StockAnalyzerService } from './services/stock-analyzer.service';
 
@@ -10,6 +10,7 @@ import { StockAnalyzerService } from './services/stock-analyzer.service';
 export class AppComponent {
   title = 'market-analyzer';
   public valuationData!: ValuationData;
+  public displayedColumns: string[] = ['Date', 'Price', 'FairValue'];
 
   constructor(private stockAnalyzerService: StockAnalyzerService) {
 
@@ -20,5 +21,9 @@ export class AppComponent {
       this.valuationData = res
       console.log(this.valuationData);
     })
+  }
+
+  public getTableData(): HistoricalQuote[] {
+    return this.valuationData.equation_coefficients.price_fairvalue;
   }
 }

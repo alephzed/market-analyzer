@@ -32,7 +32,13 @@ export interface EquationCoefficients {
     dividend_coef: number,
     earnings_coef: number,
     treasury_coef: number,
-    price_fairvalue: string
+    price_fairvalue: HistoricalQuote[]
+}
+
+export interface HistoricalQuote {
+    Date: string,
+    Price: number,
+    FairValue: number
 }
 
 export interface ValuationData {
