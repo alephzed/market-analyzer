@@ -3,58 +3,42 @@
     <span>Market Analyzer</span>
   </mat-toolbar>
   <div class="grid-container">
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >Stock Valuation</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Dividend</div> <div class="field-value">{{ valuationData.stock_valuation.dividend }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Current Price</div> <div class="field-value">{{ valuationData.market_quote.close }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">PE Ratio</div> <div class="field-value">{{valuationData.market_data.pe_ratio}}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Dividend Yield</div> <div class="field-value">{{valuationData.market_data.div_yield}}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Treasury Yield</div> <div class="field-value">{{valuationData.market_data.treasury_yield}}</div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="valuation-card">
-      <mat-card-header class="title">
-        <mat-card-title >Coefficients</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="card-grid-container">
-          <div class="field-descriptor">Dividend</div> <div class="field-value">{{ valuationData.equation_coefficients.dividend_coef }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Earnings</div> <div class="field-value">{{ valuationData.equation_coefficients.earnings_coef }}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Treasury</div> <div class="field-value">{{valuationData.equation_coefficients.treasury_coef}}</div>
-        <mat-divider></mat-divider><mat-divider></mat-divider>
-        <div class="field-descriptor">Intercept</div> <div class="field-value">{{valuationData.equation_coefficients.intercept}}</div>
-      </mat-card-content>
-    </mat-card>
-    <app-earnings [title]="valuationData.stock_valuation.current_earnings.earnings_type"
+    <app-stock-valuation class="card" [dividend]="valuationData.stock_valuation.dividend"
+                  [currentPrice]="valuationData.market_quote.close"
+                  [peRatio]="valuationData.market_data.pe_ratio"
+                  [dividendYield]="valuationData.market_data.div_yield"
+                  [treasuryYield]="valuationData.market_data.treasury_yield"
+    />
+    <app-coefficients class="card"
+                  [dividend]="valuationData.equation_coefficients.dividend_coef"
+                  [earnings]="valuationData.equation_coefficients.earnings_coef"
+                  [treasury]="valuationData.equation_coefficients.treasury_coef"
+                  [intercept]="valuationData.equation_coefficients.intercept"
+    />
+    <app-earnings class="card" 
+                  [title]="valuationData.stock_valuation.current_earnings.earnings_type"
                   [earnings]="valuationData.stock_valuation.current_earnings.earnings"
                   [price]="valuationData.stock_valuation.current_earnings.calculated_price"
                   [valuation]="valuationData.stock_valuation.current_earnings.valuation"
     />
-    <app-earnings [title]="valuationData.stock_valuation.future_earnings.earnings_type"
+    <app-earnings class="card"
+                  [title]="valuationData.stock_valuation.future_earnings.earnings_type"
                   [earnings]="valuationData.stock_valuation.future_earnings.earnings"
                   [price]="valuationData.stock_valuation.future_earnings.calculated_price"
                   [valuation]="valuationData.stock_valuation.future_earnings.valuation"
     />
-    <app-earnings [title]="valuationData.stock_valuation.max_earnings.earnings_type"
+    <app-earnings class="card" [title]="valuationData.stock_valuation.max_earnings.earnings_type"
                   [earnings]="valuationData.stock_valuation.max_earnings.earnings"
                   [price]="valuationData.stock_valuation.max_earnings.calculated_price"
                   [valuation]="valuationData.stock_valuation.max_earnings.valuation"
     />
-    <app-earnings [title]="valuationData.stock_valuation.blended_earnings.earnings_type"
+    <app-earnings class="card" [title]="valuationData.stock_valuation.blended_earnings.earnings_type"
                   [earnings]="valuationData.stock_valuation.blended_earnings.earnings"
                   [price]="valuationData.stock_valuation.blended_earnings.calculated_price"
                   [valuation]="valuationData.stock_valuation.blended_earnings.valuation"
     />
   </div>
-  <table mat-table [dataSource]="getTableData()" class="mat-elevation-z8">
+  <table mat-table [dataSource]="getTableData()" class="mat-elevation-z20">
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef> Date </th>
       <td mat-cell *matCellDef="let element"> {{element.date}} </td>

@@ -1,0 +1,30 @@
+.card-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    padding: 1em;
+  }
+
+  .valuation-card {
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: var(--mdc-elevated-card-container-shape, var(--mdc-shape-medium, 30px));
+  }
+
+  .card-title {
+    background-color: orangered;
+  }
+
+  .field-descriptor {
+    text-align: left;
+    padding: 1em;
+  }
+
+  .field-value {
+    text-align: right;
+    padding: 1em;
+  }
+
+  .mat-divider {
+    border-top-color: black;
+  }

@@ -13,12 +13,12 @@ import { MatDividerModule } from '@angular/material/divider';
 export class EarningsComponent {
 
   @Input()
-  public title: string = "Title";
+  public title!: string;
   @Input()
-  public earnings: number = 123;
+  public earnings!: number;
   @Input()
-  public price: number = 10;
+  public price!: number;
   @Input()
-  public valuation: string = "Valuation";
+  public valuation!: string;
 
 }

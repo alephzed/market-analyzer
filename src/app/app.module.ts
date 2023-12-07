@@ -12,6 +12,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { EarningsComponent } from "./components/earnings/earnings.component";
+import { StockValuationComponent } from "./components/stock-valuation/stock-valuation.component";
+import { CoefficientsComponent } from "./components/coefficients/coefficients.component";
 
 @NgModule({
     declarations: [
@@ -29,7 +31,9 @@ import { EarningsComponent } from "./components/earnings/earnings.component";
         MatDividerModule,
         MatTableModule,
         MatToolbarModule,
-        EarningsComponent
+        EarningsComponent,
+        StockValuationComponent,
+        CoefficientsComponent
     ]
 })
 export class AppModule { }

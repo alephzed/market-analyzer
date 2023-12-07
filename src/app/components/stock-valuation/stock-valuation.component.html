@@ -1,1 +1,16 @@
-<p>stock-valuation works!</p>
+<mat-card class="valuation-card">
+    <mat-card-header class="card-title">
+      <mat-card-title >Stock Valuation</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-grid-container">
+        <div class="field-descriptor">Dividend</div> <div class="field-value">{{ dividend }}</div>
+      <mat-divider></mat-divider><mat-divider></mat-divider>
+      <div class="field-descriptor">Current Price</div> <div class="field-value">{{ currentPrice }}</div>
+      <mat-divider></mat-divider><mat-divider></mat-divider>
+      <div class="field-descriptor">PE Ratio</div> <div class="field-value">{{peRatio}}</div>
+      <mat-divider></mat-divider><mat-divider></mat-divider>
+      <div class="field-descriptor">Dividend Yield</div> <div class="field-value">{{dividendYield}}</div>
+      <mat-divider></mat-divider><mat-divider></mat-divider>
+      <div class="field-descriptor">Treasury Yield</div> <div class="field-value">{{treasuryYield}}</div>
+    </mat-card-content>
+  </mat-card>
