@@ -14,6 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { EarningsComponent } from "./components/earnings/earnings.component";
 import { StockValuationComponent } from "./components/stock-valuation/stock-valuation.component";
 import { CoefficientsComponent } from "./components/coefficients/coefficients.component";
+import { HistoricalQuotesComponent } from "./components/historical-quotes/historical-quotes.component";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { CoefficientsComponent } from "./components/coefficients/coefficients.co
         MatToolbarModule,
         EarningsComponent,
         StockValuationComponent,
-        CoefficientsComponent
+        CoefficientsComponent,
+        HistoricalQuotesComponent
     ]
 })
 export class AppModule { }

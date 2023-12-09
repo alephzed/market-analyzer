@@ -10,7 +10,6 @@ import { StockAnalyzerService } from './services/stock-analyzer.service';
 export class AppComponent {
   title = 'market-analyzer';
   public valuationData!: ValuationData;
-  public displayedColumns: string[] = ['date', 'price', 'fairvalue'];
 
   constructor(private stockAnalyzerService: StockAnalyzerService) {
 
@@ -23,7 +22,4 @@ export class AppComponent {
     })
   }
 
-  public getTableData(): HistoricalQuote[] {
-    return this.valuationData.equation_coefficients.price_fairvalue;
-  }
 }
