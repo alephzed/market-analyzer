@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { ValuationService } from 'src/app/services/valuation.service';
 
 @Component({
   selector: 'app-earnings',
@@ -10,7 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
   templateUrl: './earnings.component.html',
   styleUrl: './earnings.component.scss'
 })
-export class EarningsComponent {
+export class EarningsComponent implements OnInit {
 
   @Input()
   public title!: string;
@@ -20,5 +21,23 @@ export class EarningsComponent {
   public price!: number;
   @Input()
   public valuation!: string;
+  currentPrice: any;
+
+  constructor(private valuationService: ValuationService) {}
+
+  ngOnInit(): void {
+    this.valuationService.selectedQuote$.subscribe((value) => {
+      this.currentPrice = value;
+      console.log(value)
+    })
+  }
+
+  getValuationColor() {
+    return this.valuation === 'OVERVALUED'? 'red':'green';
+  }
+
+  getValuationPercent() {
+    return this.currentPrice;
+  }
 
 }

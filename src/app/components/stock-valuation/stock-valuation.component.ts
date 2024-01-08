@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { ValuationService } from 'src/app/services/valuation.service';
 
 @Component({
   selector: 'app-stock-valuation',
@@ -10,7 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
   templateUrl: './stock-valuation.component.html',
   styleUrl: './stock-valuation.component.scss'
 })
-export class StockValuationComponent {
+export class StockValuationComponent implements OnInit {
 
   @Input()
   public dividend!: number;
@@ -27,6 +28,9 @@ export class StockValuationComponent {
   @Input()
   treasuryYield!: number;
 
-  
+  constructor(private valuationService: ValuationService) {}
+  ngOnInit(): void {
+    this.valuationService.setQuote(this.currentPrice);
+  }
 
 }

@@ -7,6 +7,7 @@
       <mat-divider></mat-divider><mat-divider></mat-divider>
       <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ price }}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Valuation</div> <div class="field-value">{{valuation}}</div>
+      <div class="field-descriptor">Valuation</div> <div class="field-value" [ngStyle]="{'color':getValuationColor()}">{{valuation}}</div>
+      <div class="field-descriptor">Valuation Pct</div> <div class="field-value">{{ getValuationPercent() }}</div>
     </mat-card-content>
   </mat-card>
