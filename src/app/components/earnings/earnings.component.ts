@@ -37,7 +37,7 @@ export class EarningsComponent implements OnInit {
   }
 
   getValuationPercent() {
-    return this.currentPrice;
+    return Math.abs((this.currentPrice - this.price) / this.price * 100).toFixed(2);
   }
 
 }

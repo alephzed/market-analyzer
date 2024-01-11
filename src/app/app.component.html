@@ -4,10 +4,11 @@
   </mat-toolbar>
   <div class="grid-container">
     <app-stock-valuation class="card" [dividend]="valuationData.stock_valuation.dividend"
-                  [currentPrice]="valuationData.market_quote.close"
+                  [currentPrice]="quoteData.market_quote.close"
                   [peRatio]="valuationData.market_data.pe_ratio"
                   [dividendYield]="valuationData.market_data.div_yield"
                   [treasuryYield]="valuationData.market_data.treasury_yield"
+                  [time]="quoteData.market_quote.time"
     />
     <app-coefficients class="card"
                   [dividend]="valuationData.equation_coefficients.dividend_coef"

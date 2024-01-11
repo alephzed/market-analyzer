@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -11,7 +11,7 @@ import { ValuationService } from 'src/app/services/valuation.service';
   templateUrl: './stock-valuation.component.html',
   styleUrl: './stock-valuation.component.scss'
 })
-export class StockValuationComponent implements OnInit {
+export class StockValuationComponent implements OnInit, OnChanges {
 
   @Input()
   public dividend!: number;
@@ -28,9 +28,18 @@ export class StockValuationComponent implements OnInit {
   @Input()
   treasuryYield!: number;
 
+  @Input()
+  time!: string;
+
   constructor(private valuationService: ValuationService) {}
   ngOnInit(): void {
     this.valuationService.setQuote(this.currentPrice);
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this.valuationService.setQuote(this.currentPrice);
+  }
+  
 
 }

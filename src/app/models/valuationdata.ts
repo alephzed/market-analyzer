@@ -23,7 +23,8 @@ export interface MarketQuote {
     open: number,
     high: number,
     low: number,
-    close: number
+    close: number,
+    time: string
 }
 
 export interface EquationCoefficients {
@@ -47,9 +48,10 @@ export interface HistoricalQuote {
 export interface ValuationData {
     stock_valuation: StockValuation,
     market_data: MarketData,
-    market_quote: MarketQuote,
     equation_coefficients: EquationCoefficients
 }
 
-
+export interface QuoteData {
+    market_quote: MarketQuote
+}
 
