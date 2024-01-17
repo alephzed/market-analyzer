@@ -1,7 +1,13 @@
 <div style="text-align: center;">
   <mat-toolbar>
     <span>Market Analyzer</span>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="['/historical-data', 'GSPC' ]">Historical</a>
+      <a mat-button [routerLink]="['/valuations', 'GSPC' ]">Historical</a>
+    </div>
   </mat-toolbar>
+  <router-outlet></router-outlet>
   <div class="grid-container">
     <app-stock-valuation class="card" [dividend]="valuationData.stock_valuation.dividend"
                   [currentPrice]="quoteData.market_quote.close"
@@ -39,6 +45,6 @@
                   [valuation]="valuationData.stock_valuation.blended_earnings.valuation"
     />
   </div>
-  <app-historical-quotes
-        [historicalData]="valuationData.equation_coefficients.price_fairvalue"/>
+  <!-- <app-historical-quotes -->
+        <!-- [historicalData]="valuationData.equation_coefficients.price_fairvalue"/> -->
 </div>

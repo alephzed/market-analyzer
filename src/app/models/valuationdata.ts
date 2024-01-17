@@ -55,3 +55,7 @@ export interface QuoteData {
     market_quote: MarketQuote
 }
 
+export interface HistoricalQuoteData {
+    price_fairvalue: HistoricalQuote[]
+}
+
