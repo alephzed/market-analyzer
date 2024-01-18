@@ -1,0 +1,17 @@
+.mat-divider {
+    border-top-color: black;
+  }
+
+  .card {
+    padding:50px;
+  }
+
+  .mat-card {
+    background-color: #ffffff;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+  }

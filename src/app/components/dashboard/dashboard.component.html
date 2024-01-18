@@ -1,0 +1,37 @@
+<div class="grid-container">
+    <app-stock-valuation class="card" [dividend]="valuationData.stock_valuation.dividend"
+                  [currentPrice]="quoteData.market_quote.close"
+                  [peRatio]="valuationData.market_data.pe_ratio"
+                  [dividendYield]="valuationData.market_data.div_yield"
+                  [treasuryYield]="valuationData.market_data.treasury_yield"
+                  [time]="quoteData.market_quote.time"
+    />
+    <app-coefficients class="card"
+                  [dividend]="valuationData.equation_coefficients.dividend_coef"
+                  [earnings]="valuationData.equation_coefficients.earnings_coef"
+                  [treasury]="valuationData.equation_coefficients.treasury_coef"
+                  [intercept]="valuationData.equation_coefficients.intercept"
+    />
+    <app-earnings class="card" 
+                  [title]="valuationData.stock_valuation.current_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.current_earnings.earnings"
+                  [price]="valuationData.stock_valuation.current_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.current_earnings.valuation"
+    />
+    <app-earnings class="card"
+                  [title]="valuationData.stock_valuation.future_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.future_earnings.earnings"
+                  [price]="valuationData.stock_valuation.future_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.future_earnings.valuation"
+    />
+    <app-earnings class="card" [title]="valuationData.stock_valuation.max_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.max_earnings.earnings"
+                  [price]="valuationData.stock_valuation.max_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.max_earnings.valuation"
+    />
+    <app-earnings class="card" [title]="valuationData.stock_valuation.blended_earnings.earnings_type"
+                  [earnings]="valuationData.stock_valuation.blended_earnings.earnings"
+                  [price]="valuationData.stock_valuation.blended_earnings.calculated_price"
+                  [valuation]="valuationData.stock_valuation.blended_earnings.valuation"
+    />
+  </div>

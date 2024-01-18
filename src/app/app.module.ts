@@ -15,6 +15,7 @@ import { EarningsComponent } from "./components/earnings/earnings.component";
 import { StockValuationComponent } from "./components/stock-valuation/stock-valuation.component";
 import { CoefficientsComponent } from "./components/coefficients/coefficients.component";
 import { HistoricalQuotesComponent } from "./components/historical-quotes/historical-quotes.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
