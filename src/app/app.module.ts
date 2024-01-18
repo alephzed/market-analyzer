@@ -10,6 +10,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { EarningsComponent } from "./components/earnings/earnings.component";
 import { StockValuationComponent } from "./components/stock-valuation/stock-valuation.component";
@@ -26,11 +27,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
         MatSlideToggleModule,
         MatCardModule,
         MatDividerModule,
+        MatTabsModule,
         MatTableModule,
         MatToolbarModule,
         EarningsComponent,

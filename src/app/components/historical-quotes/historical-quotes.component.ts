@@ -4,11 +4,12 @@ import { HistoricalQuote } from 'src/app/models/valuationdata';
 import { MatTableModule } from '@angular/material/table';
 import { HistoricalDataService } from 'src/app/services/historical-data.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-historical-quotes',
   standalone: true,
-  imports: [CommonModule, MatTableModule],
+  imports: [CommonModule, MatTableModule, MatTabsModule],
   templateUrl: './historical-quotes.component.html',
   styleUrl: './historical-quotes.component.scss'
 })
