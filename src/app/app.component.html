@@ -1,11 +1,10 @@
 <div style="text-align: center;">
-  <mat-toolbar>
+  <mat-toolbar color="warm">
     <span>Market Analyzer</span>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="['/historical-data', 'GSPC' ]">Historical</a>
-      <a mat-button [routerLink]="['/dashboard', 'GSPC' ]">Dashboard</a>
-    </div>
+    <span class="example-fill-remaining-space"></span>
+      <button mat-button [routerLink]="['/dashboard', 'GSPC' ]" routerLinkActive="activebutton">Dashboard</button>
+      <button mat-button [routerLink]="['/historical-data', 'GSPC' ]" routerLinkActive="activebutton">Historical</button>
+
   </mat-toolbar>
   <router-outlet></router-outlet>
 </div>

@@ -17,6 +17,8 @@ import { StockValuationComponent } from "./components/stock-valuation/stock-valu
 import { CoefficientsComponent } from "./components/coefficients/coefficients.component";
 import { HistoricalQuotesComponent } from "./components/historical-quotes/historical-quotes.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
     declarations: [
@@ -31,8 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AppRoutingModule,
         HttpClientModule,
         MatSlideToggleModule,
+        MatButtonModule,
         MatCardModule,
         MatDividerModule,
+        MatSortModule,
         MatTabsModule,
         MatTableModule,
         MatToolbarModule,
