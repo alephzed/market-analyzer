@@ -42,7 +42,10 @@ export interface HistoricalQuote {
     fairvalue: number,
     dividend: number,
     earnings: number,
-    rate_gs10: number
+    rate_gs10: number,
+    actualvalue: number,
+    actualdividend: number,
+    actualearnings: number
 }
 
 export interface ValuationData {

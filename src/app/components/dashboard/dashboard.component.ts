@@ -6,7 +6,7 @@ import { EarningsComponent } from "../earnings/earnings.component";
 import { StockAnalyzerService } from 'src/app/services/stock-analyzer.service';
 import { QuoteService } from 'src/app/services/quote.service';
 import { interval } from "rxjs/internal/observable/interval"
-import { Subscription, skipWhile, startWith, switchMap, takeWhile } from 'rxjs';
+import { Subscription, startWith, switchMap } from 'rxjs';
 import { QuoteData, ValuationData } from 'src/app/models/valuationdata';
 import { ActivatedRoute } from '@angular/router';
 
@@ -22,15 +22,14 @@ export class DashboardComponent implements OnInit, OnDestroy{
     quoteSubscription!: Subscription;
     public valuationData!: ValuationData;
     public quoteData!: QuoteData;
-    private finished = false;
 
     id!: string;
     
     constructor(private stockAnalyzerService: StockAnalyzerService, private quoteService: QuoteService, private route: ActivatedRoute) {
 
     }
+
     ngOnDestroy(): void {
-        this.finished= true;
         this.analyzerSubscription.unsubscribe();
         this.quoteSubscription.unsubscribe();
     }
@@ -42,7 +41,6 @@ export class DashboardComponent implements OnInit, OnDestroy{
         this.analyzerSubscription = interval(5000) 
             .pipe(
                 startWith(0),
-                // takeWhile(_ => this.finished),
                 switchMap(() => this.stockAnalyzerService.getData())
             ).subscribe( res => { 
                 this.valuationData = res

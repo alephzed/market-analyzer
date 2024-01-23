@@ -15,7 +15,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
   styleUrl: './historical-quotes.component.scss'
 })
 export class HistoricalQuotesComponent implements OnInit {
-  public displayedColumns: string[] = ['date', 'price', 'fairvalue', 'dividend', 'earnings', 'rate_gs10', 'valuation'];
+  public displayedColumns: string[] = ['date', 'price', 'fairvalue', 'dividend', 'earnings', 'rate_gs10', 'valuation', 'actualprice', 'actualdividend', 'actualearnings'];
 
   public historicalData! : HistoricalQuote[];
 
