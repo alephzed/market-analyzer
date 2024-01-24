@@ -8,7 +8,10 @@ import { QuoteService } from 'src/app/services/quote.service';
 import { interval } from "rxjs/internal/observable/interval"
 import { Subscription, startWith, switchMap } from 'rxjs';
 import { QuoteData, ValuationData } from 'src/app/models/valuationdata';
-import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/store/reducers';
+import { QuoteState } from 'src/app/store/reducers/quote.reducer';
 
 @Component({
     selector: 'app-dashboard',
@@ -24,8 +27,11 @@ export class DashboardComponent implements OnInit, OnDestroy{
     public quoteData!: QuoteData;
 
     id!: string;
+    quoteItem$!: Observable<QuoteState>;
+    val!: string;
     
-    constructor(private stockAnalyzerService: StockAnalyzerService, private quoteService: QuoteService, private route: ActivatedRoute) {
+    constructor(private stockAnalyzerService: StockAnalyzerService, private quoteService: QuoteService,
+        private store: Store<AppState>) {
 
     }
 
@@ -35,9 +41,10 @@ export class DashboardComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.id = params['id'];
-          });
+        this.quoteItem$ = this.store.select((store) => store.quote);
+        this.quoteItem$.subscribe((s) => {
+          this.val = s.quote.name;
+        });
         this.analyzerSubscription = interval(5000) 
             .pipe(
                 startWith(0),
@@ -49,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
         this.quoteSubscription = interval(5000) 
             .pipe(
                 startWith(0),
-                switchMap(() => this.quoteService.getData(this.id))
+                switchMap(() => this.quoteService.getData(this.val))
             ).subscribe( res => { 
                 this.quoteData = res
                 console.log(this.quoteData)

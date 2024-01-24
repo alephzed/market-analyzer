@@ -5,9 +5,9 @@ import { HistoricalQuotesComponent } from './components/historical-quotes/histor
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard/GSPC', pathMatch: 'full'},
-  { path: 'historical-data/:id', component: HistoricalQuotesComponent },
-  { path: 'dashboard/:id', component: DashboardComponent }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  { path: 'historical-data', component: HistoricalQuotesComponent },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
