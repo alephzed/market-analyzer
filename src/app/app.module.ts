@@ -19,6 +19,8 @@ import { HistoricalQuotesComponent } from "./components/historical-quotes/histor
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSortModule} from '@angular/material/sort';
+import { reducers } from './store/reducers/'
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
     declarations: [
@@ -43,7 +45,10 @@ import {MatSortModule} from '@angular/material/sort';
         EarningsComponent,
         StockValuationComponent,
         CoefficientsComponent,
-        HistoricalQuotesComponent
+        HistoricalQuotesComponent,
+        StoreModule.forRoot(
+            reducers,
+          ),
     ]
 })
 export class AppModule { }
