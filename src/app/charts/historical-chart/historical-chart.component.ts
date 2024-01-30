@@ -58,38 +58,23 @@ export class HistoricalChartComponent {
   actualPrices: any;
 
   setChartParams(): any {
-  this.options = {
-    title: {
-      text: 'Historical Market Returns',
-      subtext: 'Real vs Fair Value'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'cross'
-      }
-    },
-    xAxis: {
+    this.options.xAxis =  {
       type: 'category',
       boundaryGap: false,
       data: this.dates
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [{
-      name: 'FairValue',
-      data: this.fairvalues,
-      type: 'line',
-      areaStyle: {}
-    },
-    {
-      name: 'Actual',
-      data: this.actualPrices,
-      type: 'line',
-      areaStyle: {}
-    }]
+    };
+    this.options.series =  [{
+        name: 'FairValue',
+        data: this.fairvalues,
+        type: 'line',
+        areaStyle: {}
+      },
+      {
+        name: 'Actual',
+        data: this.actualPrices,
+        type: 'line',
+        areaStyle: {}
+      }];
+    return this.options;
   }
-  return this.options;
-}
 }
