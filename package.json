@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
     "@ngrx/store": "^17.1.0",
+    "echarts": "^5.4.3",
+    "ngx-echarts": "^17.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -29,6 +31,7 @@
     "@angular-devkit/build-angular": "^17.1.0",
     "@angular/cli": "^17.1.0",
     "@angular/compiler-cli": "^17.1.0",
+    "@types/echarts": "^4.9.22",
     "@types/jasmine": "~3.10.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "^12.11.1",

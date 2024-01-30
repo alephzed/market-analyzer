@@ -22,6 +22,9 @@ import {MatSortModule} from '@angular/material/sort';
 import { reducers } from './store/reducers/'
 import { StoreModule } from '@ngrx/store';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+import { HistoricalChartComponent } from './charts/historical-chart/historical-chart.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -46,9 +49,13 @@ import { StoreModule } from '@ngrx/store';
         StockValuationComponent,
         CoefficientsComponent,
         HistoricalQuotesComponent,
+        HistoricalChartComponent,
         StoreModule.forRoot(
             reducers,
           ),
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+          })
     ]
 })
 export class AppModule { }

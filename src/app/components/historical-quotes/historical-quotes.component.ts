@@ -9,13 +9,14 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/reducers';
 import { QuoteState } from 'src/app/store/reducers/quote.reducer';
+import { HistoricalChartComponent } from "../../charts/historical-chart/historical-chart.component";
 
 @Component({
-  selector: 'app-historical-quotes',
-  standalone: true,
-  imports: [CommonModule, MatTableModule, MatTabsModule, MatSortModule],
-  templateUrl: './historical-quotes.component.html',
-  styleUrl: './historical-quotes.component.scss'
+    selector: 'app-historical-quotes',
+    standalone: true,
+    templateUrl: './historical-quotes.component.html',
+    styleUrl: './historical-quotes.component.scss',
+    imports: [CommonModule, MatTableModule, MatTabsModule, MatSortModule, HistoricalChartComponent]
 })
 export class HistoricalQuotesComponent implements OnInit {
   public displayedColumns: string[] = ['date', 'price', 'fairvalue', 'dividend', 'earnings', 'rate_gs10', 'valuation', 'actualprice', 'actualdividend', 'actualearnings'];
@@ -45,5 +46,17 @@ export class HistoricalQuotesComponent implements OnInit {
 
   public getValuation(actual: number, fairvalue: number) : string {
     return ((actual - fairvalue) /fairvalue).toFixed(2);
+  }
+
+  public getHistoricalData(): string[] {
+    return this.dataSource.data.map( s=> s.date);
+  }
+
+  public getFairValues(): number[] {
+    return this.dataSource.data.map(s => s.fairvalue);
+  }
+
+  public getActualPrices(): number[] {
+    return this.dataSource.data.map(s => s.price);
   }
 }
