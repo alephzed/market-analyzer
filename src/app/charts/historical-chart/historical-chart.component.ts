@@ -17,6 +17,7 @@ export class HistoricalChartComponent {
 
   options: EChartsOption = {
     title: {
+      left: 'center',
       text: 'Historical Market Returns',
       subtext: 'Real vs Fair Value'
     },
@@ -26,14 +27,27 @@ export class HistoricalChartComponent {
         type: 'cross'
       }
     },
+    grid: {
+      bottom: 80
+    },
     xAxis: {
       type: 'category',
-      boundaryGap: false,
+      boundaryGap: true,
       data: []
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
     },
+    dataZoom: [
+      {
+        type: 'inside',
+        start: 75,
+        end: 100
+      },
+      {
+        type: 'slider',
+      }
+    ],
     series: [{
       name: 'FairValue',
       data: [],
