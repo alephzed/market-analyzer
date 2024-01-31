@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HistoricalQuote } from 'src/app/models/valuationdata';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/reducers';
 import { QuoteState } from 'src/app/store/reducers/quote.reducer';
 import { HistoricalChartComponent } from "../../charts/historical-chart/historical-chart.component";
+import { HistoricalObserverService } from 'src/app/services/historical-observer.service';
 
 @Component({
     selector: 'app-historical-quotes',
@@ -18,7 +19,7 @@ import { HistoricalChartComponent } from "../../charts/historical-chart/historic
     styleUrl: './historical-quotes.component.scss',
     imports: [CommonModule, MatTableModule, MatTabsModule, MatSortModule, HistoricalChartComponent]
 })
-export class HistoricalQuotesComponent implements OnInit {
+export class HistoricalQuotesComponent implements OnInit, OnChanges {
   public displayedColumns: string[] = ['date', 'price', 'fairvalue', 'dividend', 'earnings', 'rate_gs10', 'valuation', 'actualprice', 'actualdividend', 'actualearnings'];
 
   public historicalData! : HistoricalQuote[];
@@ -31,7 +32,7 @@ export class HistoricalQuotesComponent implements OnInit {
   @ViewChild(MatSort) 
   sort!: MatSort;
 
-  constructor(private historicalDataService: HistoricalDataService, private store: Store<AppState>) {}
+  constructor(private historicalDataService: HistoricalDataService, private store: Store<AppState>, private historicalObserverService: HistoricalObserverService) {}
 
   ngOnInit(): void {
     this.quoteItem$ = this.store.select((store) => store.quote);
@@ -41,22 +42,16 @@ export class HistoricalQuotesComponent implements OnInit {
     this.historicalDataService.getData(this.val).subscribe( res => {
       this.dataSource.data = res.price_fairvalue;
       this.dataSource.sort = this.sort;
+      this.historicalObserverService.setHistoricalData(res.price_fairvalue);
     });
+
+  }
+
+  ngOnChanges(): void {
+    this.historicalObserverService.setHistoricalData(this.dataSource.data);
   }
 
   public getValuation(actual: number, fairvalue: number) : string {
     return ((actual - fairvalue) /fairvalue).toFixed(2);
-  }
-
-  public getHistoricalData(): string[] {
-    return this.dataSource.data.map( s=> s.date);
-  }
-
-  public getFairValues(): number[] {
-    return this.dataSource.data.map(s => s.fairvalue);
-  }
-
-  public getActualPrices(): number[] {
-    return this.dataSource.data.map(s => s.price);
   }
 }

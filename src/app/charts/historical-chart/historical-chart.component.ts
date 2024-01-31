@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
 import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+import { HistoricalQuote } from 'src/app/models/valuationdata';
+import { HistoricalObserverService } from 'src/app/services/historical-observer.service';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
     provideEcharts(),
   ],
 })
-export class HistoricalChartComponent {
+export class HistoricalChartComponent implements OnInit {
 
   options: EChartsOption = {
     title: {
@@ -62,33 +64,49 @@ export class HistoricalChartComponent {
     }]
   };
 
-  @Input()
-  dates: any;
+  fairValueData!: HistoricalQuote[];
 
-  @Input()
-  fairvalues: any;
+  constructor(private historicalObserverService: HistoricalObserverService) {}
 
-  @Input()
-  actualPrices: any;
+  ngOnInit(): void {
+      this.historicalObserverService.selectedHistoricalData$.subscribe((value) => {
+      this.fairValueData = value;
+      console.log(value)
+    })
+  }
 
   setChartParams(): any {
     this.options.xAxis =  {
       type: 'category',
       boundaryGap: false,
-      data: this.dates
+      data: this.getDates()
     };
     this.options.series =  [{
         name: 'FairValue',
-        data: this.fairvalues,
+        data: this.getFairValues(),
+        // data: this.fairvalues,
         type: 'line',
         areaStyle: {}
       },
       {
         name: 'Actual',
-        data: this.actualPrices,
+        data: this.getActualPrices(),
         type: 'line',
         areaStyle: {}
       }];
     return this.options;
   }
+
+  getFairValues(): number[] {
+    return this.fairValueData.map(s => s.fairvalue);
+  }
+
+  getDates(): string[] {
+    return this.fairValueData.map( s=> s.date);
+  }
+
+  getActualPrices(): number[] {
+    return this.fairValueData.map(s => s.price);
+  }
 }
+
