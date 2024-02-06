@@ -29,8 +29,18 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
 
   dataSource = new MatTableDataSource<HistoricalQuote>();
 
+   sort!: MatSort;
+
   @ViewChild(MatSort) 
-  sort!: MatSort;
+  set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+     }
+ 
+     setDataSourceAttributes() {
+      // this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      }   
 
   constructor(private historicalDataService: HistoricalDataService, private store: Store<AppState>, private historicalObserverService: HistoricalObserverService) {}
 
@@ -41,9 +51,9 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
     });
     this.historicalDataService.getData(this.val).subscribe( res => {
       this.dataSource.data = res.price_fairvalue;
-      this.dataSource.sort = this.sort;
       this.historicalObserverService.setHistoricalData(res.price_fairvalue);
     });
+    this.dataSource.sort = this.sort;
 
   }
 
@@ -51,7 +61,7 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
     this.historicalObserverService.setHistoricalData(this.dataSource.data);
   }
 
-  public getValuation(actual: number, fairvalue: number) : string {
-    return ((actual - fairvalue) /fairvalue).toFixed(2);
-  }
+  // public getValuation(actual: number, fairvalue: number) : string {
+  //   return ((actual - fairvalue) /fairvalue).toFixed(2);
+  // }
 }

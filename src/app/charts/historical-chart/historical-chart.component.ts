@@ -71,7 +71,6 @@ export class HistoricalChartComponent implements OnInit {
   ngOnInit(): void {
       this.historicalObserverService.selectedHistoricalData$.subscribe((value) => {
       this.fairValueData = value;
-      console.log(value)
     })
   }
 
@@ -84,7 +83,6 @@ export class HistoricalChartComponent implements OnInit {
     this.options.series =  [{
         name: 'FairValue',
         data: this.getFairValues(),
-        // data: this.fairvalues,
         type: 'line',
         areaStyle: {}
       },

@@ -45,7 +45,8 @@ export interface HistoricalQuote {
     rate_gs10: number,
     actualvalue: number,
     actualdividend: number,
-    actualearnings: number
+    actualearnings: number,
+    valuation: number
 }
 
 export interface ValuationData {
