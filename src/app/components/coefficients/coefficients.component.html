@@ -3,12 +3,12 @@
       <mat-card-title >Coefficients</mat-card-title>
     </mat-card-header>
     <mat-card-content class="card-grid-container">
-        <div class="field-descriptor">Dividend</div> <div class="field-value">{{ dividend }}</div>
+        <div class="field-descriptor">Dividend</div> <div class="field-value">{{ dividend | number:'1.0-2' }}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Earnings</div> <div class="field-value">{{ earnings }}</div>
+      <div class="field-descriptor">Earnings</div> <div class="field-value">{{ earnings | number:'1.0-2'}}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Treasury</div> <div class="field-value">{{ treasury }}</div>
+      <div class="field-descriptor">Treasury</div> <div class="field-value">{{ treasury | number:'1.0-2' }}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Intercept</div> <div class="field-value">{{ intercept }}</div>
+      <div class="field-descriptor">Intercept</div> <div class="field-value">{{ intercept | number:'1.0-2'}}</div>
     </mat-card-content>
   </mat-card>

@@ -30,9 +30,9 @@ export interface MarketQuote {
 export interface EquationCoefficients {
     name: string,
     intercept: number,
-    dividend_coef: number,
-    earnings_coef: number,
-    treasury_coef: number,
+    dividend: number,
+    earnings: number,
+    treasury: number,
     price_fairvalue: HistoricalQuote[]
 }
 

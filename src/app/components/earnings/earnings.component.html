@@ -3,12 +3,12 @@
       <mat-card-title >{{ title }}</mat-card-title>
     </mat-card-header>
     <mat-card-content class="card-grid-container">
-        <div class="field-descriptor">Earnings</div> <div class="field-value">{{ earnings }}</div>
+        <div class="field-descriptor">Earnings</div> <div class="field-value">{{ earnings | number:'1.0-2'}}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ price }}</div>
+      <div class="field-descriptor">Calculated Price</div> <div class="field-value">{{ price | number:'1.0-2'}}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
       <div class="field-descriptor">Valuation</div> <div class="field-value" [ngStyle]="{'color':getValuationColor()}">{{valuation}}</div>
       <mat-divider></mat-divider><mat-divider></mat-divider>
-      <div class="field-descriptor">Valuation Pct</div> <div class="field-value" [ngStyle]="{'color':getValuationColor()}">{{ getValuationPercent() }}%</div>
+      <div class="field-descriptor">Valuation Pct</div> <div class="field-value" [ngStyle]="{'color':getValuationColor()}">{{ getValuationPercent() | number:'1.0-2'}}%</div>
     </mat-card-content>
   </mat-card>

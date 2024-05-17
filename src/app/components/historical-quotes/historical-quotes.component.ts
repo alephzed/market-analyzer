@@ -5,6 +5,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { HistoricalDataService } from 'src/app/services/historical-data.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store/reducers';
@@ -17,7 +18,7 @@ import { HistoricalObserverService } from 'src/app/services/historical-observer.
     standalone: true,
     templateUrl: './historical-quotes.component.html',
     styleUrl: './historical-quotes.component.scss',
-    imports: [CommonModule, MatTableModule, MatTabsModule, MatSortModule, HistoricalChartComponent]
+    imports: [CommonModule, MatTableModule, MatTabsModule, MatSortModule, MatPaginatorModule, HistoricalChartComponent]
 })
 export class HistoricalQuotesComponent implements OnInit, OnChanges {
   public displayedColumns: string[] = ['date', 'price', 'fairvalue', 'dividend', 'earnings', 'rate_gs10', 'valuation', 'actualprice', 'actualdividend', 'actualearnings'];
@@ -34,13 +35,23 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
   @ViewChild(MatSort) 
   set matSort(ms: MatSort) {
     this.sort = ms;
+    this.sort.direction = 'desc';
+    this.sort.active = 'date';
     this.setDataSourceAttributes();
-     }
+  }
  
-     setDataSourceAttributes() {
-      // this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      }   
+  @ViewChild('paginator')
+  set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }
+  
+  paginator!: MatPaginator;
+
+  setDataSourceAttributes() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }   
 
   constructor(private historicalDataService: HistoricalDataService, private store: Store<AppState>, private historicalObserverService: HistoricalObserverService) {}
 
@@ -54,14 +65,10 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
       this.historicalObserverService.setHistoricalData(res.price_fairvalue);
     });
     this.dataSource.sort = this.sort;
-
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges(): void {
     this.historicalObserverService.setHistoricalData(this.dataSource.data);
   }
-
-  // public getValuation(actual: number, fairvalue: number) : string {
-  //   return ((actual - fairvalue) /fairvalue).toFixed(2);
-  // }
 }

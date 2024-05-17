@@ -27,7 +27,15 @@ export class HistoricalChartComponent implements OnInit {
       trigger: 'axis',
       axisPointer: {
         type: 'cross'
-      }
+      },
+      formatter: (params: any) => {
+        console.log(params);
+        return `
+                  <span style="float: left">${params[0].marker} ${params[0].seriesName}:</span><span style="float: right; margin-left: 20px">${(params[0].value).toFixed(2)}</span><br />
+                  <span style="float: left">${params[1].marker} ${params[1].seriesName}:</span><span style="float: right; margin-left: 20px">${(params[1].value).toFixed(2)}</span><br />
+                  <span style="float: left">valuation:</span><span style="float: right; margin-left: 20px">${((1 - params[0].value/params[1].value) * 100).toFixed(2)}%</span>
+                  `;
+      },
     },
     grid: {
       bottom: 80
