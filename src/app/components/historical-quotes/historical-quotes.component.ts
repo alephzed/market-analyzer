@@ -61,6 +61,23 @@ export class HistoricalQuotesComponent implements OnInit, OnChanges {
       this.val = s.quote.name;
     });
     this.historicalDataService.getData(this.val).subscribe( res => {
+      res.calculated_price_fairvalue.forEach( x => {
+        var histQuote = <HistoricalQuote>{};
+        histQuote.dividend = x.dividend
+        histQuote.earnings = x.calculated_earnings
+        histQuote.fairvalue = x.calculated_price
+        histQuote.date = x.event_time
+        histQuote.price = x.current_price
+        histQuote.rate_gs10 = x.treasury_yield
+        histQuote.actualdividend = x.dividend
+        histQuote.actualearnings = x.calculated_earnings
+        histQuote.actualprice = x.current_price
+        histQuote.valuation = x.current_price / x.calculated_price
+        res.price_fairvalue.push(histQuote)
+      });
+      
+      
+      // HistoricalQuote historicalQuote = new HistoricalQuote(); 
       this.dataSource.data = res.price_fairvalue;
       this.historicalObserverService.setHistoricalData(res.price_fairvalue);
     });

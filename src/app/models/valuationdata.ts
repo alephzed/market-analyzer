@@ -1,3 +1,5 @@
+import { HistoricalEarnings } from "./earningsdata"
+
 export interface Earnings {
     earnings: number,
     earnings_type: string,
@@ -46,6 +48,7 @@ export interface HistoricalQuote {
     actualvalue: number,
     actualdividend: number,
     actualearnings: number,
+    actualprice: number,
     valuation: number
 }
 
@@ -60,6 +63,7 @@ export interface QuoteData {
 }
 
 export interface HistoricalQuoteData {
-    price_fairvalue: HistoricalQuote[]
+    price_fairvalue: HistoricalQuote[],
+    calculated_price_fairvalue: HistoricalEarnings[]
 }
 

@@ -10,4 +10,5 @@ export interface HistoricalEarnings {
     treasury_yield: number;
     dividend: number;
     event_time: string;
+    current_price: number;
 }
