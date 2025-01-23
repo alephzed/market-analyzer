@@ -21,7 +21,8 @@ export class EarningsComponent implements OnInit {
   public price!: number;
   @Input()
   public valuation!: string;
-  currentPrice: any;
+  @Input() 
+  currentPrice!: number;
 
   constructor(private valuationService: ValuationService) {}
 
@@ -38,6 +39,10 @@ export class EarningsComponent implements OnInit {
 
   getValuationPercent() {
     return Math.abs((this.currentPrice - this.price) / this.price * 100).toFixed(2);
+  }
+
+  getCalculatedPE() {
+    return (this.currentPrice / this.earnings).toFixed(2);
   }
 
 }

@@ -17,6 +17,7 @@
                   [earnings]="valuationData.stock_valuation.current_earnings.earnings"
                   [price]="valuationData.stock_valuation.current_earnings.calculated_price"
                   [valuation]="valuationData.stock_valuation.current_earnings.valuation"
+                  [currentPrice]="quoteData.market_quote.close"
     />
     <app-earnings class="card"
                   [title]="valuationData.stock_valuation.future_earnings.earnings_type"
