@@ -1,0 +1,31 @@
+<mat-tab-group>
+    <mat-tab label="Table">
+        <table mat-table [dataSource]="dataSource" matSort matclass="valuation-card mat-elevation-z20">
+            <caption>historical earnings calculations</caption>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.event_time}} </td>
+            </ng-container>
+            <ng-container matColumnDef="calculated_earnings">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Calculated Earnings </th>
+                <td mat-cell *matCellDef="let element"> {{element.calculated_earnings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="future_earnings">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Future Earnings </th>
+                <td mat-cell *matCellDef="let element"> {{element.future_earnings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="blended_earnings">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Blended Earnings </th>
+                <td mat-cell *matCellDef="let element"> {{element.blended_earnings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="max_earnings">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Max Earnings </th>
+                <td mat-cell *matCellDef="let element"> {{element.max_earnings}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+        </table>
+    </mat-tab>
+
+    <mat-tab label="Graph"><app-earnings-chart></app-earnings-chart></mat-tab>
+</mat-tab-group>

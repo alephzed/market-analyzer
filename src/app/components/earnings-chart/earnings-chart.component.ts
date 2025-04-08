@@ -4,6 +4,7 @@ import { EChartsOption } from 'echarts';
 import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
 import { Observable } from 'rxjs';
 import { HistoricalEarnings } from 'src/app/models/earningsdata';
+import { EarningsObserverService } from 'src/app/services/earnings-observer.service';
 import { HistoricalEarningsService } from 'src/app/services/historical-earnings.service';
 import { AppState } from 'src/app/store/reducers';
 import { QuoteState } from 'src/app/store/reducers/quote.reducer';
@@ -22,22 +23,17 @@ export class EarningsChartComponent implements OnInit {
 
   historicalEarnings!: HistoricalEarnings[];
 
-  constructor(private earningsService: HistoricalEarningsService, private store: Store<AppState>) {}
+  constructor(private earningsObserverService: EarningsObserverService) {}
 
   ngOnInit(): void {
-    this.quoteItem$ = this.store.select((store) => store.quote);
-    this.quoteItem$.subscribe((s) => {
-      this.val = s.quote.name;
-    });
-    this.earningsService.getData(this.val).subscribe( res => {
-      this.historicalEarnings = res;
-      console.log(this.historicalEarnings);
-    });
+    this.earningsObserverService.selectedEarningsData$.subscribe( (s) => {
+      this.historicalEarnings = s;
+    })
   }
 
   options: EChartsOption = {
     title: {
-      text: 'Dividends Trends'
+      text: 'Earnings Trends'
     },
     tooltip: {
       trigger: 'axis'
